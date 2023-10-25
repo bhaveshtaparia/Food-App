@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
   // Sample restaurant data
@@ -47,10 +47,20 @@ const Home = () => {
     <View style={styles.container}>
       {isNavbarOpen && (
         <View style={styles.navbar}>
-          <Text style={styles.navbarItem}>Home</Text>
-          <Text style={styles.navbarItem}>Browse</Text>
-          <Text style={styles.navbarItem}>Favorites</Text>
-          <Text style={styles.navbarItem}>Profile</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Text style={styles.navbarItem}>Home</Text>
+        </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+            <Text style={styles.navbarItem}>Create New Product</Text>
+        </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+            <Text style={styles.navbarItem}>Favorites</Text>
+        </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Text style={styles.navbarItem}>Profile</Text>
+        </TouchableOpacity>
+         
+     
         </View>
       )}
       <TouchableOpacity onPress={toggleNavbar} style={styles.navbarButton}>
